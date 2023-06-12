@@ -1,6 +1,8 @@
-import Expenses from "./components/Expenses";
+import React from "react";
+import NewExpense from "./components/NewExpenses/NewExpense";
+import Expenses from "./components/Expenses/Expenses";
 
-function App() {
+const App = () => {
 	const expenses = [
 		{
 			id: "e1",
@@ -23,12 +25,20 @@ function App() {
 		},
 	];
 
+	const addExpenseDataHandler = (expense) => {
+		console.log(expense);
+		console.log("IN app.js");
+	};
+	//  We can use th below react code instead of JSX by importing the react.
+	// return React.createElement("div", {}, React.createElement("h2", {}, "Let's get started!"), React.createElement(Expenses, { items: expenses }));
+
 	return (
 		<div>
+			<NewExpense onAddExpenseData={addExpenseDataHandler} />
 			<h2>Let's get started!</h2>
 			<Expenses items={expenses} />
 		</div>
 	);
-}
+};
 
 export default App;
